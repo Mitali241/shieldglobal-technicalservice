@@ -1,0 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PageIntro } from "@/components/page-intro";
+import { Reveal } from "@/components/reveal";
+
+const capabilities=["Engineering","Manufacturing","Quality","Customization"];
+export const Route = createFileRoute("/capabilities")({ head: () => ({ meta: [{ title: "Capabilities — Axiom Industrial" }, { name: "description", content: "A technical framework for engineering, manufacturing, quality, and customization." }, { property: "og:title", content: "Capabilities — Axiom Industrial" }, { property: "og:description", content: "From concept and manufacture through validation." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: CapabilitiesPage });
+function CapabilitiesPage(){return <><PageIntro index="04" title="From concept to controlled performance." description="A clear capability architecture ready for verified processes, equipment, standards, and service scope."/><section className="technical-container py-20 lg:py-32">{capabilities.map((name,index)=><Reveal key={name}><article className="grid gap-6 border-t border-border py-10 md:grid-cols-[8rem_1fr_1fr]"><span className="font-display text-6xl text-primary">0{index+1}</span><h2 className="font-display text-5xl md:text-7xl">{name}</h2><p className="max-w-md text-sm leading-7 text-muted-foreground">Placeholder capability description. Add factual process, technology, capacity, and quality information here.</p></article></Reveal>)}</section></>}

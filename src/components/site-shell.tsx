@@ -1,0 +1,546 @@
+import { Link, useRouterState } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  ChevronDown,
+  Cpu,
+  Flame,
+  Layers,
+  Menu,
+  Phone,
+  Mail,
+  Shield,
+  ShieldCheck,
+  Users,
+  Wrench,
+  X,
+  Zap,
+} from "lucide-react";
+import { useEffect, useState, type ReactNode, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { QuoteModal } from "@/components/quote-modal";
+import { servicesList } from "@/data/services";
+
+const serviceIconsMap: Record<string, typeof Building2> = {
+  Building2,
+  Wrench,
+  Flame,
+  Zap,
+  Cpu,
+  Layers,
+  Users,
+};
+
+export function SiteShell({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  useEffect(() => {
+    setOpen(false);
+    setServicesDropdownOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setServicesDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 150);
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col justify-between">
+      {/* Quotation Dialog accessible throughout app */}
+      <QuoteModal open={quoteModalOpen} onOpenChange={setQuoteModalOpen} />
+
+      {/* Main Header - Clean White Background, Left Logo & Right-Aligned Menus */}
+      <header className="fixed inset-x-0 top-0 z-50 bg-white/95 text-slate-900 border-b border-slate-200/90 backdrop-blur-md shadow-xs transition-all duration-300">
+        <div className="technical-container">
+          <div className="flex h-20 items-center justify-between gap-6 lg:h-24">
+            {/* Left Side Logo: Shield Global Technical Services LLC */}
+            <Link
+              to="/"
+              className="group flex items-center gap-3.5 shrink-0"
+              aria-label="Shield Global Technical Services LLC home"
+            >
+              <div className="relative flex h-11 w-11 items-center justify-center rounded-sm bg-slate-900 text-amber-500 border border-slate-800 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary shadow-sm">
+                <Shield className="h-6 w-6 transition-transform duration-300 group-hover:scale-105" />
+                <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5 items-center justify-center bg-amber-500 text-[8px] font-bold text-slate-950 rounded-[1px]">
+                  +
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-sans text-sm sm:text-base font-extrabold uppercase tracking-[0.14em] text-slate-900 leading-tight group-hover:text-primary transition-colors">
+                  Shield Global
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 leading-tight">
+                  Technical Services LLC
+                </span>
+              </div>
+            </Link>
+
+            {/* Right Side: Navigation Menus & CTA Button */}
+            <div className="ml-auto hidden items-center gap-2 xl:gap-3 lg:flex">
+              <nav
+                className="flex items-center gap-1 xl:gap-2"
+                aria-label="Main navigation"
+              >
+                {/* Home */}
+                <Link
+                  to="/"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  Home
+                </Link>
+
+                {/* About Us */}
+                <Link
+                  to="/about"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  About Us
+                </Link>
+
+                {/* Services Dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link
+                    to="/services"
+                    className={`inline-flex items-center gap-1 px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+                      servicesDropdownOpen ? "text-primary font-bold" : "text-slate-700 hover:text-primary"
+                    }`}
+                    onClick={() => setServicesDropdownOpen(false)}
+                  >
+                    Services
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                        servicesDropdownOpen ? "rotate-180 text-primary" : "text-slate-500"
+                      }`}
+                    />
+                  </Link>
+
+                  {/* Dropdown Menu - Clean White Card */}
+                  <AnimatePresence>
+                    {servicesDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute right-0 top-full mt-1.5 w-[620px] rounded-sm border border-slate-200 bg-white p-5 text-slate-900 shadow-2xl backdrop-blur-xl z-50"
+                      >
+                        <div className="border-b border-slate-100 pb-3 mb-3 flex items-center justify-between px-1">
+                          <div className="text-[11px] uppercase tracking-[0.18em] font-bold text-slate-500">
+                            Service Divisions
+                          </div>
+                          <Link
+                            to="/services"
+                            className="text-[11px] uppercase tracking-[0.14em] font-bold text-primary hover:underline flex items-center gap-1"
+                          >
+                            All Services <ArrowUpRight className="h-3.5 w-3.5" />
+                          </Link>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2.5">
+                          {servicesList.map((srv) => {
+                            const IconComp = serviceIconsMap[srv.icon] || Building2;
+                            return (
+                              <Link
+                                key={srv.id}
+                                to="/services"
+                                hash={srv.id}
+                                className="group/item flex items-start gap-3 rounded-sm p-2.5 transition-all hover:bg-slate-50 border border-transparent hover:border-slate-100"
+                              >
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-slate-200 bg-slate-50 text-slate-700 group-hover/item:border-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-all">
+                                  <IconComp className="h-4 w-4" />
+                                </span>
+                                <div className="space-y-0.5">
+                                  <div className="text-[12px] font-bold uppercase tracking-wider text-slate-900 group-hover/item:text-primary transition-colors">
+                                    {srv.title}
+                                  </div>
+                                  <p className="line-clamp-1 text-[11px] text-slate-500 leading-normal">
+                                    {srv.shortDesc}
+                                  </p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+
+                        <div className="mt-4 border-t border-slate-100 pt-3 px-2 flex items-center justify-between bg-slate-50/80 rounded-sm p-2.5 text-xs">
+                          <span className="text-[11px] text-slate-600 font-medium">
+                            Need specific technical specs or project BOQ?
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setServicesDropdownOpen(false);
+                              setQuoteModalOpen(true);
+                            }}
+                            className="text-[11px] font-bold uppercase tracking-wider text-primary hover:underline flex items-center gap-1"
+                          >
+                            Request Quotation →
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Industries */}
+                <Link
+                  to="/industries"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  Industries
+                </Link>
+
+                {/* Projects */}
+                <Link
+                  to="/projects"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  Projects
+                </Link>
+
+                {/* HSE & Quality */}
+                <Link
+                  to="/hse-quality"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  HSE & Quality
+                </Link>
+
+                {/* Careers */}
+                <Link
+                  to="/careers"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  Careers
+                </Link>
+
+                {/* Contact Us */}
+                <Link
+                  to="/contact"
+                  className="px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-700 hover:text-primary transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </nav>
+
+              {/* Rightmost CTA Button: Request a Quotation */}
+              <div className="pl-2">
+                <Button
+                  onClick={() => setQuoteModalOpen(true)}
+                  variant="default"
+                  size="sm"
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] shadow-sm transition-all active:scale-95 shrink-0"
+                >
+                  Request a Quotation
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile Hamburger Toggle (Right Aligned on Mobile) */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-slate-800 hover:bg-slate-100"
+                onClick={() => setOpen((val) => !val)}
+                aria-label={open ? "Close menu" : "Open menu"}
+              >
+                {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Drawer - Clean White Sheet */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="max-h-[85vh] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 text-slate-900 lg:hidden shadow-2xl"
+            >
+              <div className="space-y-1">
+                {/* Home */}
+                <Link
+                  to="/"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>Home</span>
+                  <span className="text-[10px] text-slate-400 font-mono">01</span>
+                </Link>
+
+                {/* About Us */}
+                <Link
+                  to="/about"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>About Us</span>
+                  <span className="text-[10px] text-slate-400 font-mono">02</span>
+                </Link>
+
+                {/* Services Expandable Accordion */}
+                <div className="border-b border-slate-100 py-2">
+                  <div className="flex items-center justify-between py-1">
+                    <Link
+                      to="/services"
+                      className="text-base font-semibold uppercase tracking-wider text-slate-800"
+                    >
+                      Services
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen((v) => !v)}
+                      className="p-2 text-slate-500 hover:text-slate-900"
+                    >
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          mobileServicesOpen ? "rotate-180 text-primary" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="space-y-2 pb-3 pt-2 pl-3 border-l-2 border-primary/40 my-2"
+                      >
+                        {servicesList.map((srv) => (
+                          <Link
+                            key={srv.id}
+                            to="/services"
+                            hash={srv.id}
+                            className="block py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-primary"
+                          >
+                            {srv.title}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Industries */}
+                <Link
+                  to="/industries"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>Industries</span>
+                  <span className="text-[10px] text-slate-400 font-mono">04</span>
+                </Link>
+
+                {/* Projects */}
+                <Link
+                  to="/projects"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>Projects</span>
+                  <span className="text-[10px] text-slate-400 font-mono">05</span>
+                </Link>
+
+                {/* HSE & Quality */}
+                <Link
+                  to="/hse-quality"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>HSE & Quality</span>
+                  <span className="text-[10px] text-slate-400 font-mono">06</span>
+                </Link>
+
+                {/* Careers */}
+                <Link
+                  to="/careers"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>Careers</span>
+                  <span className="text-[10px] text-slate-400 font-mono">07</span>
+                </Link>
+
+                {/* Contact Us */}
+                <Link
+                  to="/contact"
+                  className="flex items-center justify-between border-b border-slate-100 py-3 text-base font-semibold uppercase tracking-wider text-slate-800"
+                >
+                  <span>Contact Us</span>
+                  <span className="text-[10px] text-slate-400 font-mono">08</span>
+                </Link>
+              </div>
+
+              {/* Mobile CTA */}
+              <div className="mt-6 pt-4 border-t border-slate-100 space-y-3">
+                <Button
+                  onClick={() => {
+                    setOpen(false);
+                    setQuoteModalOpen(true);
+                  }}
+                  className="w-full justify-center bg-primary py-3 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-md"
+                  size="lg"
+                >
+                  Request a Quotation <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+
+                <div className="flex justify-between items-center text-[11px] text-slate-500 pt-2">
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <ShieldCheck className="h-3.5 w-3.5 text-primary" /> ISO 9001 / 45001 / 14001
+                  </span>
+                  <span>tenders@shieldglobal.com</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* Main Content Area with appropriate top spacing for fixed navbar */}
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="flex-1"
+        >
+          {children}
+        </motion.main>
+      </AnimatePresence>
+
+      {/* Footer */}
+      <footer className="border-t border-border bg-card text-card-foreground">
+        <div className="technical-container py-16 lg:py-20">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+            {/* Column 1: Company Profile */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center border border-primary/50 bg-primary/10 text-primary">
+                  <Shield className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="font-sans text-sm font-bold uppercase tracking-[0.14em]">
+                    Shield Global
+                  </div>
+                  <div className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Technical Services LLC
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                Delivering excellence across building construction, facility management, oil & gas, energy utilities, MEP contracting, welding fabrication, and technical engineering support.
+              </p>
+              <div className="pt-2">
+                <Button
+                  onClick={() => setQuoteModalOpen(true)}
+                  variant="outline"
+                  size="sm"
+                  className="text-xs uppercase tracking-wider font-semibold"
+                >
+                  Request a Quotation
+                </Button>
+              </div>
+            </div>
+
+            {/* Column 2: Service Divisions */}
+            <div className="space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground">
+                Service Divisions
+              </div>
+              <ul className="space-y-2 text-xs text-muted-foreground">
+                {servicesList.map((srv) => (
+                  <li key={srv.id}>
+                    <Link
+                      to="/services"
+                      hash={srv.id}
+                      className="hover:text-primary transition-colors block py-0.5"
+                    >
+                      {srv.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Quick Navigation */}
+            <div className="space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground">
+                Navigation
+              </div>
+              <ul className="space-y-2 text-xs text-muted-foreground">
+                <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
+                <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+                <li><Link to="/services" className="hover:text-primary transition-colors">Services</Link></li>
+                <li><Link to="/industries" className="hover:text-primary transition-colors">Industries</Link></li>
+                <li><Link to="/projects" className="hover:text-primary transition-colors">Projects</Link></li>
+                <li><Link to="/hse-quality" className="hover:text-primary transition-colors">HSE & Quality</Link></li>
+                <li><Link to="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contact & Accreditations */}
+            <div className="space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground">
+                Regional Operations
+              </div>
+              <div className="space-y-2 text-xs text-muted-foreground">
+                <p>Industrial Area & Offshore Technical Operations</p>
+                <p className="flex items-center gap-2">
+                  <Mail className="h-3.5 w-3.5 text-primary" /> info@shieldglobal.com
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="h-3.5 w-3.5 text-primary" /> +971 4 000 0000 / Quotations
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-border">
+                <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                  Standards & Compliance
+                </div>
+                <div className="mt-1 text-[11px] font-medium text-foreground">
+                  ISO 9001:2015 • ISO 14001:2015 • ISO 45001:2018
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-muted-foreground">
+            <div>
+              © {new Date().getFullYear()} Shield Global Technical Services LLC. All rights reserved.
+            </div>
+            <div className="flex gap-6 uppercase tracking-wider text-[10px]">
+              <Link to="/hse-quality" className="hover:text-foreground">HSE Policy</Link>
+              <Link to="/about" className="hover:text-foreground">Quality Assurance</Link>
+              <Link to="/contact" className="hover:text-foreground">Tenders & Inquiries</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
