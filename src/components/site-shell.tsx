@@ -299,6 +299,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
               transition={{ duration: 0.25 }}
               className="max-h-[85vh] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 text-slate-900 lg:hidden shadow-2xl"
             >
+              <div className="pb-4 mb-3 border-b border-slate-100 flex items-center justify-between">
+                <Link to="/" onClick={() => setOpen(false)} className="inline-block">
+                  <img
+                    src={logoImg}
+                    alt="Shield Global Technical Services LLC"
+                    className="h-9 w-auto object-contain"
+                  />
+                </Link>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[rgb(128,0,0)] bg-[rgba(128,0,0,0.08)] px-2 py-0.5 rounded-xs">
+                  ISO Certified
+                </span>
+              </div>
               <div className="space-y-1">
                 {/* Home */}
                 <Link
