@@ -32,53 +32,57 @@ function AboutPage() {
         description="Shield Global Technical Services LLC is a premier technical solutions and multi-disciplinary contracting firm delivering specialized engineering, construction, facility maintenance, and industrial support."
       />
 
-      <section className="technical-container grid gap-12 py-20 lg:grid-cols-[1.1fr_.9fr] lg:py-28 lg:items-center">
+      <section className="technical-container grid gap-8 py-10 sm:py-12 md:py-14 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
         <Reveal>
-          <div className="relative overflow-hidden border border-border">
+          <div className="relative overflow-hidden border border-border bg-black rounded-xs">
             <img
               src={heroImage}
               width={1536}
               height={1280}
               alt="Shield Global Technical operations"
-              className="aspect-[4/3] w-full object-cover"
+              className="aspect-[4/3] w-full object-cover opacity-90"
             />
-            <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-md p-4 border border-border">
-              <div className="text-xs font-mono uppercase text-primary font-bold">
+            <div className="absolute bottom-3 left-3 right-3 bg-black/85 backdrop-blur-md p-3.5 border border-zinc-800 text-white rounded-xs">
+              <div className="text-xs font-mono uppercase text-[rgb(220,100,100)] font-bold">
                 Shield Global Technical Services LLC
               </div>
-              <div className="text-[11px] text-muted-foreground">
+              <div className="text-[11px] text-zinc-300">
                 Committed to Safety, Quality & Engineering Precision
               </div>
             </div>
           </div>
         </Reveal>
 
-        <Reveal className="space-y-6">
-          <div className="section-label">Corporate Overview</div>
-          <h2 className="font-display text-4xl leading-tight md:text-6xl">
+        <Reveal className="space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[rgba(128,0,0,0.08)] text-[rgb(128,0,0)] border border-[rgba(128,0,0,0.2)] text-[11px] font-bold uppercase tracking-[0.16em] rounded-xs">
+            Corporate Overview
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-foreground tracking-tight">
             Delivering robust technical solutions built to last.
           </h2>
-          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+          <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
             From heavy structural construction and MEP installations to oil & gas infrastructure maintenance and certified technical staffing, Shield Global provides end-to-end expertise tailored to demanding industrial requirements.
           </p>
-          <div className="space-y-3 pt-2">
+          <div className="space-y-2 pt-1">
             {[
               "Multi-disciplinary engineering capabilities under one roof",
               "ISO 9001:2015, ISO 14001:2015 & ISO 45001:2018 certified management",
               "Experienced project managers, certified inspectors, and specialized workforce",
               "Uncompromising adherence to HSE standards and client project timelines",
             ].map((pt, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>{pt}</span>
+              <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(128,0,0)]" />
+                <span className="text-foreground font-medium">{pt}</span>
               </div>
             ))}
           </div>
-          <div className="pt-4 flex gap-4">
+          <div className="pt-3 flex flex-wrap gap-3">
             <QuoteModal>
-              <Button variant="default" size="lg">Request a Quotation</Button>
+              <Button variant="default" size="default" className="bg-[rgb(128,0,0)] hover:bg-[rgb(150,15,15)] text-white font-bold uppercase tracking-wider text-xs shadow-md rounded-xs">
+                Request a Quotation
+              </Button>
             </QuoteModal>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="default" className="text-xs uppercase tracking-wider font-bold rounded-xs">
               <Link to="/contact">Contact Our Team</Link>
             </Button>
           </div>
@@ -86,11 +90,13 @@ function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="border-y border-border bg-card py-20 lg:py-28">
+      <section className="border-t border-border bg-slate-50/70 py-10 sm:py-12 md:py-14">
         <div className="technical-container">
-          <div className="section-label">Core Pillars</div>
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">Our Operating Principles</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[rgba(128,0,0,0.08)] text-[rgb(128,0,0)] border border-[rgba(128,0,0,0.2)] text-[11px] font-bold uppercase tracking-[0.16em] rounded-xs">
+            Core Pillars
+          </div>
+          <h2 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">Our Operating Principles</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
             {[
               {
                 title: "Engineering Precision",
@@ -109,13 +115,15 @@ function AboutPage() {
               },
             ].map((item, index) => (
               <Reveal key={item.title}>
-                <div className="border border-border bg-background p-8 space-y-4 h-full">
+                <div className="border border-border bg-white p-6 space-y-3 h-full transition-all hover:border-[rgb(128,0,0)] hover:shadow-lg rounded-xs">
                   <div className="flex items-center justify-between">
-                    <item.icon className="h-7 w-7 text-primary" />
-                    <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
+                    <span className="flex h-10 w-10 items-center justify-center bg-[rgba(128,0,0,0.08)] text-[rgb(128,0,0)] rounded-xs">
+                      <item.icon className="h-5 w-5" />
+                    </span>
+                    <span className="text-xs font-mono font-bold text-[rgb(128,0,0)]">0{index + 1}</span>
                   </div>
-                  <h3 className="font-display text-2xl">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">{item.title}</h3>
+                  <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
               </Reveal>
             ))}

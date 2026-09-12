@@ -50,15 +50,15 @@ export function QuoteModal({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
-      <DialogContent className="max-w-2xl border-border bg-card p-0 text-card-foreground shadow-2xl sm:max-h-[90vh] overflow-y-auto">
-        <div className="border-b border-border bg-foreground p-6 text-hero-foreground sm:p-8">
-          <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
+      <DialogContent className="max-w-2xl border-zinc-800 bg-card p-0 text-card-foreground shadow-2xl sm:max-h-[90vh] overflow-y-auto">
+        <div className="border-b border-zinc-800 bg-[#0a0a0a] p-6 text-white sm:p-8">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
             <Sparkles className="h-3.5 w-3.5" /> Fast Response Engineering Quotation
           </div>
-          <DialogTitle className="mt-2 font-display text-3xl font-medium tracking-tight sm:text-4xl text-hero-foreground">
+          <DialogTitle className="mt-2 font-display text-2xl font-medium tracking-tight sm:text-4xl text-white">
             Request a Quotation
           </DialogTitle>
-          <DialogDescription className="mt-2 text-xs sm:text-sm text-hero-foreground/80">
+          <DialogDescription className="mt-2 text-xs sm:text-sm text-zinc-300">
             Shield Global Technical Services LLC — Share your technical requirements, specifications, or bill of quantities for an engineered proposal.
           </DialogDescription>
         </div>
