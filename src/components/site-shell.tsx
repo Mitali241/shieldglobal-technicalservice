@@ -75,7 +75,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-1.5 text-zinc-300">
                 <Mail className="h-3.5 w-3.5 text-[rgb(128,0,0)]" />
-                <span>tenders@shieldglobal.com</span>
+                <span>info@shieldglobaltech.ae</span>
               </span>
               <span className="flex items-center gap-1.5 text-zinc-300">
                 <Phone className="h-3.5 w-3.5 text-[rgb(128,0,0)]" />
@@ -85,7 +85,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <div className="flex items-center gap-5 text-[10.5px] uppercase tracking-wider text-zinc-400">
               <span className="flex items-center gap-1 text-zinc-200">
                 <ShieldCheck className="h-3.5 w-3.5 text-[rgb(128,0,0)]" />
-                <span>ISO 9001 • ISO 14001 • ISO 45001</span>
+                <span>Quality Assured • Safety First • Engineering Excellence</span>
               </span>
               <span className="text-zinc-600">|</span>
               <span>UAE & GCC Multi-Disciplinary Contracting</span>
@@ -94,17 +94,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
 
         <div className="technical-container">
-          <div className="flex h-16 sm:h-20 items-center justify-between gap-6">
+          <div className="flex h-20 sm:h-24 items-center justify-between gap-6">
             {/* Left Side Logo: Shield Global Technical Services LLC */}
             <Link
               to="/"
               className="group flex items-center gap-3 shrink-0 py-1"
               aria-label="Shield Global Technical Services LLC home"
+              title="Shield Global Technical Services LLC"
             >
               <img
                 src={logoImg}
                 alt="Shield Global Technical Services LLC"
-                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />
             </Link>
 
@@ -300,15 +301,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
               className="max-h-[85vh] overflow-y-auto border-t border-slate-200 bg-white px-6 py-6 text-slate-900 lg:hidden shadow-2xl"
             >
               <div className="pb-4 mb-3 border-b border-slate-100 flex items-center justify-between">
-                <Link to="/" onClick={() => setOpen(false)} className="inline-block">
+                <Link to="/" onClick={() => setOpen(false)} className="inline-block" title="Shield Global Technical Services LLC">
                   <img
                     src={logoImg}
                     alt="Shield Global Technical Services LLC"
-                    className="h-9 w-auto object-contain"
+                    className="h-12 sm:h-14 w-auto object-contain"
                   />
                 </Link>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[rgb(128,0,0)] bg-[rgba(128,0,0,0.08)] px-2 py-0.5 rounded-xs">
-                  ISO Certified
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[rgb(128,0,0)] bg-[rgba(128,0,0,0.08)] px-2.5 py-1 rounded-xs">
+                  Quality Assured
                 </span>
               </div>
               <div className="space-y-1">
@@ -436,9 +437,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
                 <div className="flex justify-between items-center text-[11px] text-slate-500 pt-2">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <ShieldCheck className="h-3.5 w-3.5 text-primary" /> ISO 9001 / 45001 / 14001
+                    <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Safety & Quality Standard
                   </span>
-                  <span>tenders@shieldglobal.com</span>
+                  <span>info@shieldglobaltech.ae</span>
                 </div>
               </div>
             </motion.div>
@@ -466,11 +467,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {/* Column 1: Company Profile & Official Logo */}
             <div className="space-y-4">
-              <Link to="/" className="inline-block">
+              <Link to="/" className="inline-block" title="Shield Global Technical Services LLC">
                 <img
                   src={logoImg}
                   alt="Shield Global Technical Services LLC"
-                  className="h-11 w-auto object-contain bg-white/95 p-1 rounded-sm shadow-sm"
+                  className="h-14 sm:h-16 md:h-18 w-auto object-contain bg-white/95 p-1.5 rounded-sm shadow-sm"
                 />
               </Link>
               <p className="text-xs leading-relaxed text-zinc-400">
@@ -533,7 +534,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <div className="space-y-2 text-xs text-zinc-400">
                 <p>Industrial Area & Offshore Technical Operations</p>
                 <p className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 text-primary" /> info@shieldglobal.com
+                  <Mail className="h-3.5 w-3.5 text-primary" /> info@shieldglobaltech.ae
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="h-3.5 w-3.5 text-primary" /> +971 4 000 0000 / Quotations
@@ -542,11 +543,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
               <div className="pt-3 border-t border-zinc-800">
                 <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-400">
-                  Standards & Compliance
+                  Quality & Safety
                 </div>
                 <div className="mt-1 text-[11px] font-semibold text-white flex items-center gap-1.5">
                   <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-                  ISO 9001:2015 • ISO 14001:2015 • ISO 45001:2018
+                  Zero-Incident HSE & Strict QA/QC Compliance
                 </div>
               </div>
             </div>

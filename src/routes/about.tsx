@@ -66,9 +66,9 @@ function AboutPage() {
           <div className="space-y-2 pt-1">
             {[
               "Multi-disciplinary engineering capabilities under one roof",
-              "ISO 9001:2015, ISO 14001:2015 & ISO 45001:2018 certified management",
+              "Comprehensive QA/QC and zero-incident HSE management systems",
               "Experienced project managers, certified inspectors, and specialized workforce",
-              "Uncompromising adherence to HSE standards and client project timelines",
+              "Uncompromising adherence to safety standards and client project timelines",
             ].map((pt, i) => (
               <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(128,0,0)]" />

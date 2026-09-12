@@ -157,7 +157,7 @@ function ServicesPage() {
                             Shield Global Ref-0{index + 1}
                           </span>
                           <span className="flex items-center gap-1.5 text-xs text-primary font-bold">
-                            <ShieldCheck className="h-4 w-4 text-primary" /> ISO Certified
+                            <ShieldCheck className="h-4 w-4 text-primary" /> Quality Assured
                           </span>
                         </div>
                       </div>

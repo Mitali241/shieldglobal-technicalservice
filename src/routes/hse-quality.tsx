@@ -13,7 +13,7 @@ export const Route = createFileRoute("/hse-quality")({
       {
         name: "description",
         content:
-          "Health, Safety, Environment, and Quality commitment at Shield Global Technical Services LLC. Zero-incident culture and rigorous ISO quality assurance.",
+          "Health, Safety, Environment, and Quality commitment at Shield Global Technical Services LLC. Zero-incident culture and rigorous engineering quality assurance.",
       },
       { property: "og:title", content: "HSE & Quality — Shield Global Technical Services LLC" },
       { property: "og:type", content: "website" },
@@ -28,7 +28,7 @@ function HseQualityPage() {
       <PageIntro
         index="06"
         title="Health, Safety, Environment & Quality (HSEQ)"
-        description="At Shield Global Technical Services LLC, HSE is an uncompromising cornerstone. We maintain a zero-incident culture alongside rigorous ISO certified quality assurance across all engineering, fabrication, and field operations."
+        description="At Shield Global Technical Services LLC, HSE is an uncompromising cornerstone. We maintain a zero-incident culture alongside rigorous quality assurance across all engineering, fabrication, and field operations."
       />
 
       {/* Main Philosophy */}
@@ -41,7 +41,7 @@ function HseQualityPage() {
                 Zero harm to people, zero impact to the environment, 100% adherence to quality.
               </h2>
               <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Shield Global Technical Services LLC enforces stringent HSE management systems modeled on international best practices (ISO 45001, ISO 14001, and ISO 9001). Our proactive safety culture empowers every team member with Stop-Work Authority.
+                Shield Global Technical Services LLC enforces stringent HSE management systems modeled on international engineering best practices and regional regulatory benchmarks. Our proactive safety culture empowers every team member with Stop-Work Authority.
               </p>
               
               <div className="grid gap-3.5 pt-2 sm:grid-cols-2">
@@ -54,7 +54,7 @@ function HseQualityPage() {
                 </div>
                 <div className="border border-border p-4 bg-card transition-all hover:border-primary">
                   <Award className="h-6 w-6 text-primary mb-2" />
-                  <h3 className="font-display text-lg sm:text-xl mb-1 text-foreground">ISO 9001 Quality Control</h3>
+                  <h3 className="font-display text-lg sm:text-xl mb-1 text-foreground">Strict QA/QC Controls</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     Comprehensive Material Test Certificates (MTC), NDT inspection logs, and traceable Quality Control Plans (ITP).
                   </p>
@@ -85,17 +85,17 @@ function HseQualityPage() {
             {[
               {
                 title: "Occupational Health & Safety",
-                desc: "Certified to ISO 45001:2018. Comprehensive site induction, emergency evacuation drills, hazardous material management, and continuous hazard mitigation.",
+                desc: "Zero-harm safety framework. Comprehensive site induction, emergency evacuation drills, hazardous material management, and continuous hazard mitigation.",
                 icon: ShieldCheck,
               },
               {
                 title: "Environmental Stewardship",
-                desc: "Certified to ISO 14001:2015. Sustainable waste segregation, emissions reduction, energy-efficient plant operations, and ecological protection guidelines.",
+                desc: "Ecological responsibility. Sustainable waste segregation, emissions reduction, energy-efficient plant operations, and environmental protection guidelines.",
                 icon: HeartHandshake,
               },
               {
                 title: "Rigorous Quality Assurance",
-                desc: "Certified to ISO 9001:2015. Rigorous WPS/PQR welding qualification, dimensional inspection, calibration verification, and transparent reporting.",
+                desc: "Total engineering precision. Rigorous WPS/PQR welding qualification, dimensional inspection, calibration verification, and transparent reporting.",
                 icon: FileCheck,
               },
             ].map((col, idx) => (
@@ -115,7 +115,7 @@ function HseQualityPage() {
           <div>
             <h3 className="font-display text-2xl sm:text-3xl text-foreground">Require our HSEQ compliance dossier?</h3>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Request our quality manual, ISO certificates, or company HSE policy document.
+              Request our quality manual, safety records, or company HSE policy document.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

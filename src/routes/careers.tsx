@@ -35,7 +35,7 @@ const openPositions = [
     location: "UAE",
     type: "Full-Time",
     experience: "5+ Years",
-    desc: "Manage inspection and test plans (ITP), material approvals, non-conformance reports, and ensure compliance with ISO standards.",
+    desc: "Manage inspection and test plans (ITP), material approvals, non-conformance reports, and ensure compliance with stringent engineering quality standards.",
   },
   {
     title: "Lead Piping & Welding Inspector (CSWIP / AWS)",
@@ -80,7 +80,7 @@ function CareersPage() {
               <h2 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl text-foreground">Open Positions</h2>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-md">
-              Don't see your specific role? Send your CV and portfolio to <span className="text-foreground font-semibold">careers@shieldglobal.com</span>
+              Don't see your specific role? Send your CV and portfolio to <span className="text-foreground font-semibold">info@shieldglobaltech.ae</span>
             </p>
           </div>
 

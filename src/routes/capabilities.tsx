@@ -17,7 +17,7 @@ const capabilities = [
   },
   {
     name: "Quality Verification & Site HSE",
-    desc: "ISO 9001/45001/14001 certified QA/QC inspection, continuous risk evaluation, and comprehensive material traceability.",
+    desc: "Rigorous QA/QC inspection, continuous risk evaluation, and comprehensive material traceability.",
   },
 ];
 

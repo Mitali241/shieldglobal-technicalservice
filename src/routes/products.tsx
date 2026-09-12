@@ -45,7 +45,7 @@ function ProductsPage() {
                 <div className="mt-3 section-label text-primary font-bold">{product.category}</div>
                 <h2 className="mt-1 font-display text-2xl text-foreground">{product.name}</h2>
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Certified to ASME, API, and ISO manufacturing specifications.
+                  Certified to ASME, API, and international manufacturing specifications.
                 </p>
               </article>
             </Reveal>

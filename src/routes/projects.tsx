@@ -52,7 +52,7 @@ function ProjectsPage() {
               <div className="mt-3.5 section-label text-primary font-bold">{project.type}</div>
               <h2 className="mt-1 font-display text-2xl sm:text-3xl text-foreground">{project.name}</h2>
               <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
-                Engineered to strict ISO and client project specifications with on-time delivery.
+                Engineered to strict engineering quality and client project specifications with on-time delivery.
               </p>
             </article>
           </Reveal>

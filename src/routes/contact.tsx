@@ -65,11 +65,7 @@ function ContactPage() {
             <div className="border border-border bg-card p-4 space-y-2.5">
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-foreground font-medium text-xs sm:text-sm">tenders@shieldglobal.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-foreground font-medium text-xs sm:text-sm">info@shieldglobal.com</span>
+                <span className="text-foreground font-medium text-xs sm:text-sm">info@shieldglobaltech.ae</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
@@ -84,8 +80,8 @@ function ContactPage() {
             <div className="border border-border bg-card p-4 flex items-center gap-3">
               <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
               <div className="text-xs">
-                <div className="font-semibold text-foreground">ISO Certified Operations</div>
-                <div className="text-[11px] text-muted-foreground">ISO 9001:2015 • ISO 14001:2015 • ISO 45001:2018</div>
+                <div className="font-semibold text-foreground">Quality Assurance & Safety</div>
+                <div className="text-[11px] text-muted-foreground">Zero-Incident HSE • Traceable QA/QC Inspection Controls</div>
               </div>
             </div>
           </div>

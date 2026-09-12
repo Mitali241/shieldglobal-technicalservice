@@ -171,7 +171,7 @@ export function QuoteModal({
 
               <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
                 <div className="text-[11px] text-muted-foreground">
-                  Direct inquiry to: <span className="font-medium text-foreground">tenders@shieldglobal.com</span>
+                  Direct inquiry to: <span className="font-medium text-foreground">info@shieldglobaltech.ae</span>
                 </div>
                 <Button
                   type="submit"

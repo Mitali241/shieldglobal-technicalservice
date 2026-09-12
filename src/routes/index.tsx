@@ -269,7 +269,7 @@ function HomePage() {
           <div className="technical-container grid grid-cols-2 gap-3 sm:grid-cols-4 text-zinc-300 text-[10px] sm:text-xs font-mono uppercase tracking-[0.14em]">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-[rgb(128,0,0)] shrink-0" />
-              <span>ISO 9001 / 14001 / 45001</span>
+              <span>Safety & QA/QC Verified</span>
             </div>
             <div className="flex items-center gap-2">
               <Building2 className="h-4 w-4 text-[rgb(128,0,0)] shrink-0" />
@@ -287,204 +287,181 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 2. KEY SERVICES – 5 MAIN PILLARS (Tight seamless spacing) */}
-      <section id="key-services" className="py-10 sm:py-12 md:py-14 bg-background border-b border-border scroll-mt-20">
+      {/* 2. THE 5 CORE PILLARS SECTION */}
+      <section className="border-t border-border bg-background py-10 sm:py-12 md:py-14 text-foreground">
         <div className="technical-container">
-          <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-border">
-              <div>
-                <div className="section-label text-[rgb(128,0,0)] font-bold tracking-[0.18em]">01 / Key Services</div>
-                <h2 className="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
-                  5 Main Pillars of Excellence
-                </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-border">
+            <div>
+              <div className="section-label text-[rgb(128,0,0)] font-bold tracking-[0.16em]">
+                Multi-Disciplinary Capabilities
               </div>
-              <p className="max-w-md text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Integrated technical, engineering, and maintenance solutions tailored to the demanding standards of modern industrial infrastructure.
-              </p>
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+                The 5 Core Pillars
+              </h2>
             </div>
-          </Reveal>
+            <p className="max-w-md text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Engineered turnkey solutions tailored for major industrial, commercial, civil, and energy infrastructure projects across the GCC.
+            </p>
+          </div>
 
-          {/* 5 Visual Cards Grid */}
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {mainPillars.map((pillar, index) => {
-              const Icon = pillar.icon;
-
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {mainPillars.map((pillar) => {
+              const IconComp = pillar.icon;
               return (
-                <Reveal
+                <article
                   key={pillar.number}
-                  className={index === 3 || index === 4 ? "sm:col-span-1 lg:col-span-1" : ""}
+                  className="group relative flex flex-col justify-between border border-border bg-card p-6 shadow-xs transition-all duration-300 hover:border-[rgb(128,0,0)] hover:shadow-xl rounded-xs"
                 >
-                  <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-border bg-card transition-all duration-300 hover:border-[rgb(128,0,0)] hover:shadow-xl rounded-xs">
-                    {/* Visual Card Image Header */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                  <div className="space-y-4">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-black rounded-xs">
                       <img
-                        loading="lazy"
                         src={pillar.image}
                         alt={pillar.title}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                      
-                      {/* Top Badges */}
-                      <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
-                        <span className="flex h-8 w-8 items-center justify-center border border-white/20 bg-black/80 backdrop-blur-md text-white font-mono text-xs font-bold shadow-md">
-                          {pillar.number}
-                        </span>
-                        <div className="flex h-8 w-8 items-center justify-center rounded-xs bg-[rgb(128,0,0)] text-white backdrop-blur-md shadow-md">
-                          <Icon className="h-4 w-4" />
-                        </div>
-                      </div>
-
-                      {/* Tagline */}
-                      <div className="absolute bottom-2.5 left-3.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[rgb(220,100,100)] font-bold">
-                        {pillar.tagline}
+                      <div className="absolute top-3 left-3 bg-black/80 px-2 py-0.5 text-[11px] font-mono font-bold text-white border border-white/20">
+                        {pillar.number}
                       </div>
                     </div>
 
-                    {/* Card Body */}
-                    <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
-                      <div className="space-y-2.5">
-                        <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground group-hover:text-[rgb(128,0,0)] transition-colors">
-                          {pillar.number} — {pillar.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                          {pillar.desc}
-                        </p>
-
-                        {/* Capabilities Bullet points */}
-                        <div className="pt-2.5 border-t border-border space-y-1">
-                          {pillar.features.map((feat, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-xs text-foreground/90 font-medium">
-                              <span className="h-1.5 w-1.5 bg-[rgb(128,0,0)] rounded-full shrink-0" />
-                              <span>{feat}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Action Links */}
-                      <div className="mt-5 pt-3.5 border-t border-border flex items-center justify-between">
-                        <Link
-                          to="/services"
-                          hash={pillar.slug}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-foreground hover:text-[rgb(128,0,0)] transition-colors"
-                        >
-                          Explore Details <ArrowUpRight className="h-4 w-4" />
-                        </Link>
-                        <QuoteModal defaultService={pillar.title}>
-                          <button
-                            type="button"
-                            className="text-[11px] font-mono uppercase tracking-wider text-[rgb(128,0,0)] hover:underline font-bold"
-                          >
-                            Get Quote
-                          </button>
-                        </QuoteModal>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. SECONDARY SPECIALIZED TECHNICAL CAPABILITIES */}
-      <section className="py-10 sm:py-12 md:py-14 bg-slate-50/70 border-b border-border">
-        <div className="technical-container">
-          <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-border">
-              <div>
-                <div className="section-label text-[rgb(128,0,0)] font-bold tracking-[0.18em]">02 / Secondary Capabilities</div>
-                <h2 className="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
-                  Specialized Technical & Support Services
-                </h2>
-              </div>
-              <p className="max-w-md text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Complementing our main pillars with certified shop fabrication, technical secondment, and fast mobilization across turnaround projects.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* 4 Secondary Service Cards */}
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {secondaryServices.map((sec, idx) => {
-              const SecIcon = sec.icon;
-              return (
-                <Reveal key={idx}>
-                  <div className="group flex h-full flex-col justify-between border border-border bg-white p-5 transition-all duration-300 hover:border-[rgb(128,0,0)] hover:shadow-lg rounded-xs">
-                    <div className="space-y-3.5">
-                      <div className="flex items-center justify-between">
-                        <span className="flex h-10 w-10 items-center justify-center border border-border bg-[rgba(128,0,0,0.06)] text-[rgb(128,0,0)] group-hover:bg-[rgb(128,0,0)] group-hover:text-white group-hover:border-[rgb(128,0,0)] transition-colors rounded-xs">
-                          <SecIcon className="h-5 w-5" />
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="flex h-7 w-7 items-center justify-center bg-[rgba(128,0,0,0.1)] text-[rgb(128,0,0)] border border-[rgba(128,0,0,0.25)] rounded-xs">
+                          <IconComp className="h-3.5 w-3.5" />
                         </span>
-                        <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-bold">
-                          0{idx + 1}
+                        <span className="text-[11px] uppercase tracking-wider font-bold text-[rgb(128,0,0)]">
+                          {pillar.tagline}
                         </span>
                       </div>
-
-                      <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[rgb(128,0,0)]">
-                        {sec.badge}
-                      </div>
-
                       <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground group-hover:text-[rgb(128,0,0)] transition-colors">
-                        {sec.title}
+                        {pillar.title}
                       </h3>
-
-                      <p className="text-xs leading-relaxed text-muted-foreground">
-                        {sec.desc}
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        {pillar.desc}
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3.5 border-t border-border flex items-center justify-between">
-                      <Link
-                        to={sec.link}
-                        className="text-xs font-bold uppercase tracking-wider text-foreground group-hover:text-[rgb(128,0,0)] inline-flex items-center gap-1"
-                      >
-                        Learn More <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                      <QuoteModal defaultService={sec.title}>
-                        <button
-                          type="button"
-                          className="text-[11px] font-mono uppercase tracking-wider text-[rgb(128,0,0)] hover:underline font-bold"
-                        >
-                          RFQ
-                        </button>
-                      </QuoteModal>
+                    <div className="pt-2 border-t border-border/80">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-foreground mb-2">
+                        Key Capabilities:
+                      </div>
+                      <ul className="space-y-1">
+                        {pillar.features.map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <CheckCircle2 className="h-3.5 w-3.5 text-[rgb(128,0,0)] shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </Reveal>
+
+                  <div className="pt-5 mt-4 border-t border-border flex items-center justify-between">
+                    <Link
+                      to="/services"
+                      hash={pillar.slug}
+                      className="text-xs uppercase tracking-wider font-bold text-foreground group-hover:text-[rgb(128,0,0)] flex items-center gap-1.5 transition-colors"
+                    >
+                      Explore Service <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <QuoteModal defaultService={pillar.title}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-[11px] uppercase tracking-wider font-bold border-border hover:border-[rgb(128,0,0)] hover:bg-[rgb(128,0,0)] hover:text-white"
+                      >
+                        Quote
+                      </Button>
+                    </QuoteModal>
+                  </div>
+                </article>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* 4. WHY SHIELD GLOBAL & HSEQ EXCELLENCE (Rich Deep Black & Maroon Accent) */}
-      <section className="py-10 sm:py-12 md:py-14 bg-[#080808] text-white border-b border-zinc-800">
+      {/* 3. SECONDARY SERVICES & SPECIALIZED ENGINEERING */}
+      <section className="border-t border-border bg-slate-50/70 py-10 sm:py-12 md:py-14 text-foreground">
+        <div className="technical-container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-border">
+            <div>
+              <div className="section-label text-[rgb(128,0,0)] font-bold tracking-[0.16em]">
+                Specialized Technical Services
+              </div>
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+                Fabrication, Manpower & Turnarounds
+              </h2>
+            </div>
+            <p className="max-w-md text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Complementary technical disciplines providing comprehensive support from workshop pre-fabrication to on-site project commissioning.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {secondaryServices.map((srv, idx) => {
+              const IconComp = srv.icon;
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col justify-between border border-border bg-white p-5 shadow-xs transition-all duration-300 hover:border-[rgb(128,0,0)] hover:shadow-lg rounded-xs"
+                >
+                  <div className="space-y-3">
+                    <span className="flex h-10 w-10 items-center justify-center bg-[rgba(128,0,0,0.08)] text-[rgb(128,0,0)] border border-[rgba(128,0,0,0.2)] rounded-xs">
+                      <IconComp className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <span className="text-[10.5px] uppercase tracking-wider font-bold text-[rgb(128,0,0)]">
+                        {srv.badge}
+                      </span>
+                      <h3 className="mt-1 font-display text-lg font-bold text-foreground">
+                        {srv.title}
+                      </h3>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {srv.desc}
+                    </p>
+                  </div>
+                  <div className="pt-4 mt-3 border-t border-slate-100">
+                    <Link
+                      to={srv.link}
+                      className="text-xs uppercase tracking-wider font-bold text-foreground hover:text-[rgb(128,0,0)] flex items-center gap-1.5 transition-colors"
+                    >
+                      Learn More <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. HSEQ & STANDARDS ASSURANCE (Dark High-Tech Section) */}
+      <section className="border-t border-zinc-800 bg-[#0a0a0a] py-10 sm:py-12 md:py-14 text-white">
         <div className="technical-container">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="space-y-5 lg:col-span-7">
-              <div className="section-label text-[rgb(180,40,40)] font-bold tracking-[0.18em]">HSEQ & Precision Standards</div>
+              <div className="section-label text-[rgb(180,40,40)] font-bold tracking-[0.18em]">HSEQ & Quality Standards</div>
               <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.04] text-white tracking-tight">
                 Rigorous Safety Culture. <br />
                 <span className="text-[rgb(180,40,40)] font-black">Zero-Compromise Quality.</span>
               </h2>
               <p className="text-xs sm:text-sm leading-relaxed text-zinc-300 max-w-xl">
-                Every project executed by Shield Global Technical Services LLC adheres strictly to international ISO standards and regional regulatory requirements. We provide complete transparency through Inspection Test Plans (ITP), Material Test Certificates (MTC), and certified QA/QC oversight.
+                Every project executed by Shield Global Technical Services LLC adheres strictly to international engineering standards and regional regulatory requirements. We provide complete transparency through Inspection Test Plans (ITP), Material Test Certificates (MTC), and certified QA/QC oversight.
               </p>
 
               <div className="grid gap-3.5 pt-2 sm:grid-cols-3">
                 <div className="border border-zinc-800 bg-zinc-900/90 p-3.5 backdrop-blur-sm rounded-xs hover:border-[rgb(128,0,0)] transition-colors">
-                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">ISO 9001</div>
+                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">QA / QC</div>
                   <div className="text-[10px] sm:text-[11px] text-zinc-400 uppercase tracking-wider mt-1">Quality Management</div>
                 </div>
                 <div className="border border-zinc-800 bg-zinc-900/90 p-3.5 backdrop-blur-sm rounded-xs hover:border-[rgb(128,0,0)] transition-colors">
-                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">ISO 45001</div>
+                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">HSE Plan</div>
                   <div className="text-[10px] sm:text-[11px] text-zinc-400 uppercase tracking-wider mt-1">Health & Safety</div>
                 </div>
                 <div className="border border-zinc-800 bg-zinc-900/90 p-3.5 backdrop-blur-sm rounded-xs hover:border-[rgb(128,0,0)] transition-colors">
-                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">ISO 14001</div>
+                  <div className="font-display text-xl sm:text-2xl text-[rgb(180,40,40)] font-extrabold">Eco Guard</div>
                   <div className="text-[10px] sm:text-[11px] text-zinc-400 uppercase tracking-wider mt-1">Environmental</div>
                 </div>
               </div>
